@@ -19,7 +19,7 @@ char **convert_str_to_arr(char *str)
 	token = strtok(str, delim);
 	while (token != NULL)
 	{
-	       	arr[count] = strdup(token);
+		arr[count] = strdup(token);
 		token = strtok(NULL, delim);
 		count++;
 	}
@@ -50,16 +50,10 @@ int main(__attribute__((unused)) int ac, char **av)
 	size_t buffsize = 0;
 	int line_count, status = 1;
 
-	/**
-	 * The signal function receives CTRL+C and ignores
-	 * it. The SIG_IGN(ignore) param can be replaced with a void
-	 * pointer to a function, accepting param of "int signum".
-	 */
 	signal(SIGINT, SIG_IGN);
 	while (status)
 	{
 		buffer = malloc(buffsize * sizeof(char *));
-
 		if (buffer == NULL)
 		{
 			free(buffer);
@@ -91,6 +85,11 @@ int main(__attribute__((unused)) int ac, char **av)
 		free(buffer);
 		free(args);
 	}
-
 	return (0);
 }
+
+	/**
+	 * The signal function receives CTRL+C and ignores
+	 * it. The SIG_IGN(ignore) param can be replaced with a void
+	 * pointer to a function, accepting param of "int signum".
+	 */
